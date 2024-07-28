@@ -1,0 +1,11 @@
+msgid "Outsystems REST Settings"
+msgstr "Configurações Outsystems REST"
+
+msgid "API URL"
+msgstr ""
+
+msgid "HTTP Method"
+msgstr "Método HTTP"
+
+msgid "API Token"
+msgstr ""

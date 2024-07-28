@@ -1,0 +1,1 @@
+/* Scripts personalizados para o plugin */
