@@ -2,10 +2,6 @@
 
 O plugin `outsystems-rest` permite consumir uma API com autenticação personalizada. Este plugin é altamente configurável através do painel administrativo do WordPress, permitindo definir a URL da API, o método HTTP, o token de autenticação, e o nome do parâmetro.
 
-## Descrição
-
-O plugin `outsystems-rest` permite consumir uma API com autenticação personalizada. Este plugin é altamente configurável através do painel administrativo do WordPress, permitindo definir a URL da API, o método HTTP, o token de autenticação, e o nome do parâmetro.
-
 ## Instalação
 
 1. **Faça o Download do Plugin:**
