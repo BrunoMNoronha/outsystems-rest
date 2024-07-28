@@ -4,18 +4,20 @@ $param_name = get_option('outsystems_rest_param', 'texto');
 <form id="api-form" class="outsystems-rest-form">
     <label for="<?php echo esc_attr($param_name); ?>"><?php echo esc_html($param_name); ?>:</label>
     <input type="text" id="<?php echo esc_attr($param_name); ?>" name="<?php echo esc_attr($param_name); ?>" required>
-    <button type="submit" class="wp-element-button wp-block-button__link">Enviar</button>
+    <input type="hidden" id="nonce" name="nonce" value="<?php echo wp_create_nonce('outsystems_rest_nonce'); ?>">
+    <button type="submit">Enviar</button>
     <div id="loading" class="spinner" style="display:none;">Loading...</div>
 </form>
 <div id="api-result"></div>
 <script>
-    document.getElementById('api-form').addEventListener('submit', function(e) {
+    document.getElementById('api-form').addEventListener('submit', function (e) {
         e.preventDefault();
         document.getElementById('loading').style.display = 'block';
         var paramName = '<?php echo esc_js($param_name); ?>';
         var paramValue = document.getElementById(paramName).value;
+        var nonce = document.getElementById('nonce').value;
         var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = function () {
             if (this.readyState == 4) {
                 document.getElementById('loading').style.display = 'none';
                 if (this.status == 200) {
@@ -25,7 +27,7 @@ $param_name = get_option('outsystems_rest_param', 'texto');
                     if (response.success) {
                         var data = response.data;
                         if (Array.isArray(data)) {
-                            data.forEach(function(item) {
+                            data.forEach(function (item) {
                                 var itemDiv = document.createElement('div');
                                 for (var key in item) {
                                     if (item.hasOwnProperty(key)) {
@@ -57,7 +59,8 @@ $param_name = get_option('outsystems_rest_param', 'texto');
                 }
             }
         };
-        xhttp.open("GET", "<?php echo esc_url(admin_url('admin-ajax.php')); ?>?action=consultar_api&" + paramName + "=" + encodeURIComponent(paramValue), true);
-        xhttp.send();
+        xhttp.open("POST", "<?php echo esc_url(admin_url('admin-ajax.php')); ?>", true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.send(paramName + "=" + encodeURIComponent(paramValue) + "&nonce=" + nonce + "&action=consultar_api");
     });
 </script>

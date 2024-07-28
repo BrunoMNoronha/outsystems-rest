@@ -1,23 +1,23 @@
 /* Estilos personalizados para o plugin */
 
 .outsystems-rest-form {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 
 .outsystems-rest-form label,
 .outsystems-rest-form input,
 .outsystems-rest-form button {
-    display: block;
-    margin-bottom: 10px;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .outsystems-rest-form input,
 .outsystems-rest-form button {
-    width: 100%;
-    padding: 10px;
+  width: 100%;
+  padding: 10px;
 }
 
 .spinner {
-    text-align: center;
-    margin-top: 10px;
+  text-align: center;
+  margin-top: 10px;
 }
